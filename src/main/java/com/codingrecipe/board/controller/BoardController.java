@@ -1,11 +1,26 @@
 package com.codingrecipe.board.controller;
 
+import com.codingrecipe.board.dto.BoardDTO;
 import com.codingrecipe.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor //생성자주입
 public class BoardController {
     private final BoardService boardService;
+
+    @GetMapping("/save")
+    public String save(){
+        return "save";
+    }
+
+    @PostMapping("/save")
+    public String save(BoardDTO boardDTO){ //@ModelAttribute 생략가능
+        System.out.println("boardDTO = "+boardDTO);
+        boardService.save(boardDTO);
+        return "index";
+    }
 }

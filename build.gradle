@@ -23,6 +23,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//타임리프
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
 	compileOnly 'org.projectlombok:lombok'
@@ -31,6 +32,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	//db관련 - mybatis, mysql
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+	runtimeOnly 'com.mysql:mysql-connector-j'
 }
 
 tasks.named('test') {
