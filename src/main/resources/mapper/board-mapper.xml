@@ -26,4 +26,14 @@
         from board_table
         where id = #{id}
     </select>
+
+    <!-- 04. 게시글 수정 -->
+    <update id="update">
+        update board_table set boardTitle = #{boardTitle}, boardContents = #{boardContents} where id = #{id}
+    </update>
+
+    <!-- 05. 게시글 삭제 -->
+    <delete id="delete" parameterType="Long">
+        delete from board_table where id = #{id}
+    </delete>
 </mapper>
