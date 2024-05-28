@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class BoardRepository {
@@ -14,5 +16,9 @@ public class BoardRepository {
         //한번에 한개의 객체만 넘길 수 있다
         //두개 이상의 파라미터를 넘겨야할 경우 hashMap같은걸 이용해야함
         sql.insert("Board.save", boardDTO);
+    }
+
+    public List<BoardDTO> findAll() {
+        return sql.selectList("Board.findAll");
     }
 }

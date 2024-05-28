@@ -5,8 +5,14 @@
 <mapper namespace="Board">
     <!-- parameterType의 board는 BoardDTO, mybatis-config.xml파일에서 typeAlias로 지정 -->
     <!-- 지정하지 않았을 경우 BoardDTO의 경로를 전체 적어주어야한다 -->
+    <!-- 01. 게시글 작성 -->
     <insert id="save" parameterType="board">
         insert into board_table(boardTitle, boardWriter, boardPass, boardContents)
             values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
     </insert>
+    <!-- 02. 게시글 목록 -->
+    <select id="findAll" resultType="board">
+        select id, boardTitle, boardWriter, boardHits, date_format(createdAt, "%Y-%m-%d") as createdAt
+        from board_table order by id desc
+    </select>
 </mapper>
